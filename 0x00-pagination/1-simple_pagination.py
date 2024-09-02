@@ -42,5 +42,5 @@ class Server:
             raise AssertionError
         else:
             dataset = self.dataset()
-            index_range = self.index_range(page, page_size)
-            return dataset[slice(*index_range)]
+            start_index, end_index = self.index_range(page, page_size)
+            return dataset[start_index:end_index]
