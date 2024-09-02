@@ -1,3 +1,6 @@
+"""Creating and or enabling pagination"""
+
+
 def index_range(page: int, page_size: int):
     """return a tuple of size two containing \
       a start index and an end index corresponding\
