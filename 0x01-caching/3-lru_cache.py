@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Implemenys LRU caching"""
 from base_caching import BaseCaching
+from collections import OrderedDict
 
 
 class LRUCache(BaseCaching):
@@ -11,6 +12,7 @@ class LRUCache(BaseCaching):
     def __init__(self):
         """Initialize an object"""
         super().__init__()
+        self.cache_data = OrderedDict()
 
     def put(self, key, item):
         """ Add an item in the cache
