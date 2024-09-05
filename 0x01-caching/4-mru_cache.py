@@ -21,11 +21,11 @@ class MRUCache(BaseCaching):
             return
 
         else:
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                k, v = self.cache_data.popitem(last=True)
+            while len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                k, v = self.cache_data.popitem()
                 print(f'DISCARD: {k}')
 
-            self.cache_data[key] = item
+        self.cache_data[key] = item
 
     def get(self, key):
         """ Get an item by key
