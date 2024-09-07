@@ -25,7 +25,7 @@ class MRUCache(BaseCaching):
                 k, v = self.cache_data.popitem()
                 print(f'DISCARD: {k}')
 
-        self.cache_data[key] = item
+            self.cache_data[key] = item
 
     def get(self, key):
         """ Get an item by key
