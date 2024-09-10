@@ -12,9 +12,9 @@ class Config:
     TIMEZONE = "UTC"
 
 
-app.config.from_object(Config)
-babel = Babel(app, default_timezone=app.config['TIMEZONE'],
-              default_locale=app.config['LANGUAGES'][0])
+# app.config.from_object(Config)
+babel = Babel(app, default_timezone=Config.TIMEZONE,
+              default_locale=Config.LANGUAGES[0])
 
 
 @app.route('/')
