@@ -9,18 +9,12 @@ babel = Babel(app)
 class Config:
     """Create a configuration class"""
     LANGUAGES = ["en", "fr"]
+    TIMEZONE = "UTC"
 
 
 app.config.from_object(Config)
-babel = Babel(app, default_timezone="UTC", default_locale="en")
-
-
-@babel.localeselector
-def get_locale():
-    """Returns a locale"""
-    return request.accept_languages.best_match(
-        app.config['LANGUAGES']
-    )
+babel = Babel(app, default_timezone=app.config['TIMEZONE'],
+              default_locale=app.config['LANGUAGES'][0])
 
 
 @app.route('/')
