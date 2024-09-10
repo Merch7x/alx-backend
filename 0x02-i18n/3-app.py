@@ -2,6 +2,9 @@
 """Create an instance of a flask app"""
 from flask import Flask, render_template, request
 from flask_babel import Babel
+import babel
+
+
 app = Flask(__name__)
 
 
@@ -25,7 +28,7 @@ def get_locale():
     )
 
 
-@app.route('/')
+@app.route('/', methods=["GET"])
 def index():
     """Define an index route"""
     return render_template("3-index.html")
