@@ -3,8 +3,8 @@
 <h1>
   {{ gettext('home_header') }}
 </h1>
-{% if user %}
-<p>{{ gettext('logged_in_as')}}</p>
+{% if username %}
+<p>{{ gettext('logged_in_as', username=username) }}</p>
 {% else %}
 <p>{{ gettext('not_logged_in') }}</p>
 {% endif %}

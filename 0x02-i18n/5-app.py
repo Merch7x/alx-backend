@@ -40,20 +40,33 @@ users = {
 
 def get_user():
     """Retrieves a user from a list"""
-    user_id = request.args.get('login_as', type=int)
-    if user_id is not None:
-        return users.get(user_id)
-    return None
+    user_id = request.args.get('login_as')
+
+    if user_id is None:
+        return None
+
+    try:
+        user_id = int(user_id)
+    except ValueError:
+        return None
+
+    user = users.get(user_id)
+
+    if user is None:
+        return None
+
+    return user
 
 
 @app.before_request
 def before_request():
     """Execute before every request"""
-    g.user = get_user()
+    user = get_user()
+    g.user = user['name'] if user else None
 
 
 @app.route('/')
 def index():
     """Define an index route"""
-    user = g.user
-    return render_template("5-index.html", user=user)
+    username = g.user
+    return render_template("5-index.html", username=username)
