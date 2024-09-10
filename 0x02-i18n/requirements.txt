@@ -1,0 +1,4 @@
+Babel==2.8.0
+Flask==3.0.3
+flask_babel==4.0.0 #there is someincompatibility between flask and flask babel
+pytz==2024.1
