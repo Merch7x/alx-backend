@@ -30,7 +30,7 @@ def get_locale():
         if lang in app.config['LANGUAGES']:
             return lang
     headers = request.headers.get("locale")
-    if headers:
+    if headers and headers in app.config['LANGUAGES']:
         return headers
     return request.accept_languages.best_match(
         app.config['LANGUAGES']
