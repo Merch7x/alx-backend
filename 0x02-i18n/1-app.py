@@ -12,8 +12,9 @@ class Config:
 
 
 app.config.from_object(Config)
-babel = Babel(app, default_locale=app.config['LANGUAGES'][0],
-              default_timezone=app.config['TIMEZONE'])
+app.config['BABEL_DEFAULT_LOCALE'] = app.config['LANGUAGES'][0]
+app.config['BABEL_DEFAULT_TIMEZONE'] = app.config['TIMEZONE']
+babel = Babel(app)
 
 
 @app.route('/')
