@@ -2,8 +2,8 @@ import kue from 'kue';
 
 
 const job_data = {
-  phoneNumber: 'string',
-  message: 'string',
+  phoneNumber: '525689251',
+  message: 'This is the code to verify your account',
 };
 
 const queue = kue.createQueue();
