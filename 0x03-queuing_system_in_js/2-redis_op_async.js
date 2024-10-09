@@ -1,5 +1,4 @@
-import { createClient } from 'redis';
-import { print } from 'redis';
+import { createClient, print } from 'redis';
 
 async function connectToRedis() {
   const client = createClient();
@@ -20,11 +19,11 @@ async function connectToRedis() {
 async function setNewSchool(schoolName, value) {
 
   const redisClient = await connectToRedis();
-  await redisClient.set(schoolName, value, print);
+  const reply = await redisClient.set(schoolName, value)
+  console.log(`Reply: ${reply}`)
 }
 
 async function displaySchoolValue(schoolName) {
-
   const redisClient = await connectToRedis();
   const value = await redisClient.get(schoolName)
   console.log(value)

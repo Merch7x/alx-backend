@@ -20,7 +20,8 @@ async function connectToRedis() {
 async function setNewSchool(schoolName, value) {
 
   const redisClient = await connectToRedis();
-  await redisClient.set(schoolName, value, print);
+  const reply = await redisClient.set(schoolName, value)
+  console.log(`Reply: ${reply}`)
 }
 
 async function displaySchoolValue(schoolName) {
